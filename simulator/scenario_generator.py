@@ -21,40 +21,105 @@ class Scenario(Enum):
 
 def get_random_scenario() -> Scenario:
     """
-    Randomly choose a scenario.
+    Return a random scenario with a realistic distribution.
 
-    Normal operation has a much higher probability than
-    emergency situations.
+    This function is mainly used for general testing.
     """
 
     scenarios = [
         Scenario.NORMAL,
-        Scenario.NORMAL,
-        Scenario.NORMAL,
-        Scenario.NORMAL,
-        Scenario.NORMAL,
         Scenario.HEAT_STRESS,
         Scenario.GAS_LEAK,
         Scenario.WORKER_FALL,
-        Scenario.CRITICAL_EMERGENCY
+        Scenario.CRITICAL_EMERGENCY,
     ]
 
-    return random.choice(scenarios)
+    weights = [85, 5, 4, 4, 2]
 
-def get_department_default_scenario(department: str) -> Scenario:
+    return random.choices(scenarios, weights=weights, k=1)[0]
+
+
+def get_department_scenario(department: str) -> Scenario:
     """
-    Return the most common scenario for a department.
+    Select a scenario based on the worker's department.
+
+    Different departments have different probabilities of
+    experiencing industrial incidents.
     """
 
-    defaults = {
-        "Assembly Line": Scenario.NORMAL,
-        "Packaging": Scenario.NORMAL,
-        "Chemical Storage": Scenario.GAS_LEAK,
-        "Loading Dock": Scenario.WORKER_FALL,
-        "Furnace Area": Scenario.HEAT_STRESS,
+    department_probabilities = {
+        "Assembly Line": (
+            [
+                Scenario.NORMAL,
+                Scenario.HEAT_STRESS,
+                Scenario.GAS_LEAK,
+                Scenario.WORKER_FALL,
+                Scenario.CRITICAL_EMERGENCY,
+            ],
+            [90, 5, 2, 2, 1],
+        ),
+
+        "Packaging": (
+            [
+                Scenario.NORMAL,
+                Scenario.HEAT_STRESS,
+                Scenario.GAS_LEAK,
+                Scenario.WORKER_FALL,
+                Scenario.CRITICAL_EMERGENCY,
+            ],
+            [92, 3, 1, 3, 1],
+        ),
+
+        "Chemical Storage": (
+            [
+                Scenario.NORMAL,
+                Scenario.HEAT_STRESS,
+                Scenario.GAS_LEAK,
+                Scenario.WORKER_FALL,
+                Scenario.CRITICAL_EMERGENCY,
+            ],
+            [75, 5, 15, 3, 2],
+        ),
+
+        "Loading Dock": (
+            [
+                Scenario.NORMAL,
+                Scenario.HEAT_STRESS,
+                Scenario.GAS_LEAK,
+                Scenario.WORKER_FALL,
+                Scenario.CRITICAL_EMERGENCY,
+            ],
+            [80, 3, 2, 12, 3],
+        ),
+
+        "Furnace Area": (
+            [
+                Scenario.NORMAL,
+                Scenario.HEAT_STRESS,
+                Scenario.GAS_LEAK,
+                Scenario.WORKER_FALL,
+                Scenario.CRITICAL_EMERGENCY,
+            ],
+            [70, 20, 2, 5, 3],
+        ),
     }
 
-    return defaults.get(department, Scenario.NORMAL)
+    scenarios, weights = department_probabilities.get(
+        department,
+        (
+            [
+                Scenario.NORMAL,
+                Scenario.HEAT_STRESS,
+                Scenario.GAS_LEAK,
+                Scenario.WORKER_FALL,
+                Scenario.CRITICAL_EMERGENCY,
+            ],
+            [85, 5, 4, 4, 2],
+        ),
+    )
+
+    return random.choices(scenarios, weights=weights, k=1)[0]
+
 
 def should_trigger_emergency() -> bool:
     """
