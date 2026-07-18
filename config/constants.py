@@ -1,32 +1,24 @@
-"""
-Project-wide constants.
-
-These values define sensor thresholds and risk levels
-used throughout the application.
-"""
-
 # Temperature (°C)
-TEMPERATURE_NORMAL_MAX = 35
-TEMPERATURE_WARNING_MAX = 50
+TEMPERATURE_WARNING = 40.0
+TEMPERATURE_CRITICAL = 50.0
 
-# Gas (ppm)
-GAS_NORMAL_MAX = 30
-GAS_WARNING_MAX = 80
-
-# Humidity (%)
-HUMIDITY_NORMAL_MAX = 60
-HUMIDITY_WARNING_MAX = 80
+# Gas concentration (ppm)
+GAS_WARNING = 80
+GAS_CRITICAL = 120
 
 # Heart Rate (BPM)
-HEART_RATE_NORMAL_MAX = 100
-HEART_RATE_WARNING_MAX = 120
+HEART_RATE_WARNING = 100
+HEART_RATE_CRITICAL = 130
 
-# Motion Status
+# Humidity (%)
+HUMIDITY_WARNING = 70
+HUMIDITY_CRITICAL = 85
+
+# Motion
 MOTION_NORMAL = "Normal"
 MOTION_FALL = "Fall"
 
 # Risk Levels
-RISK_LOW = "Low"
-RISK_MEDIUM = "Medium"
-RISK_HIGH = "High"
+RISK_NORMAL = "Normal"
+RISK_WARNING = "Warning"
 RISK_CRITICAL = "Critical"

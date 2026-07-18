@@ -5,5 +5,5 @@ from fog_node.validator import SensorDataValidator
 simulator = SensorSimulator()
 
 reading = simulator.generate_sensor_data(WORKERS[0])
-del reading["temperature"]
+
 print("Valid:", SensorDataValidator.validate(reading))
