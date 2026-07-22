@@ -1,21 +1,11 @@
 """
-AWS configuration.
-
-This module stores DynamoDB table names and
-other AWS-related configuration.
+AWS resource configuration.
 """
 
-from config.settings import Settings
+AWS_REGION = "us-east-1"
 
+DYNAMODB_TABLE = "WorkerSafetyEvents"
 
-class AWSConfig:
-    """AWS resource configuration."""
+SNS_TOPIC_NAME = "WorkerSafetyAlerts"
 
-    REGION = Settings.AWS_REGION
-
-    WORKERS_TABLE = "Workers"
-    SENSOR_TABLE = "SensorReadings"
-    ALERTS_TABLE = "Alerts"
-
-    SNS_TOPIC_NAME = "WorkerSafetyAlerts"
-    SQS_QUEUE_NAME = "WorkerSafetyQueue"
+SQS_QUEUE_NAME = "WorkerSafetyQueue"
