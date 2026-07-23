@@ -27,3 +27,11 @@ def workers():
     data = service.get_live_data()
 
     return success(data)
+
+
+@api.route("/events", methods=["GET"])
+def events():
+
+    data = service.get_event_history()
+
+    return success(data)

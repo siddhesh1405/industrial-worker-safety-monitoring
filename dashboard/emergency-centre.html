@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Centre | Industrial Worker Safety Monitoring System</title>
+    <link rel="stylesheet" href="css/style.css?v=5.5">
+</head>
+<body data-page="emergency-centre">
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-mark">IW</div>
+                <div>
+                    <h1>Safety Monitor</h1>
+                    <p>Fog Node Dashboard</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link" data-page="dashboard"><span class="nav-icon">▦</span><span>Dashboard</span></a>
+                <a href="live-monitoring.html" class="nav-link" data-page="live-monitoring"><span class="nav-icon">●</span><span>Live Monitoring</span></a>
+                <a href="departments.html" class="nav-link" data-page="departments"><span class="nav-icon">▤</span><span>Departments</span></a>
+                <a href="analytics.html" class="nav-link" data-page="analytics"><span class="nav-icon">◫</span><span>Analytics</span></a>
+                <a href="emergency-centre.html" class="nav-link" data-page="emergency-centre"><span class="nav-icon">!</span><span>Emergency Centre</span></a>
+                <a href="event-logs.html" class="nav-link" data-page="event-logs"><span class="nav-icon">≡</span><span>Event Logs</span></a>
+                <a href="reports.html" class="nav-link" data-page="reports"><span class="nav-icon">▧</span><span>Reports</span></a>
+            </nav>
+        </aside>
+
+        <div class="page-area">
+            <header class="top-header">
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle sidebar"><span></span><span></span><span></span></button>
+                <div class="header-title">
+                    <p>Industrial Worker Safety Monitoring System</p>
+                    <h2>Emergency Centre</h2>
+                </div>
+                <div class="header-status">
+                    <div class="time-block"><span id="currentDate">--</span><strong id="currentTime">--:--:--</strong></div>
+                    <div class="status-pill system-online" id="systemStatus"><span class="status-dot"></span>System Online</div>
+                    <div class="status-pill backend-checking" id="backendStatus"><span class="status-dot"></span>Backend Checking</div>
+                    <button class="refresh-button" id="manualRefresh" type="button">Refresh</button>
+                </div>
+            </header>
+
+            <main class="main-content">
+                <section class="content-section">
+                    <div class="section-heading">
+                        <span>Response</span>
+                        <h2>Emergency Centre</h2>
+                        <p>Critical worker alerts and emergency history for safety managers and supervisors.</p>
+                    </div>
+                    <div class="loading-state" id="emergencyLoading">
+                        <span class="loading-spinner"></span>
+                        Loading emergency data
+                    </div>
+                    <div class="emergency-banner hidden" id="emergencyBanner">
+                        <div>
+                            <strong>Emergency Detected</strong>
+                            <span>Critical worker condition requires immediate attention.</span>
+                        </div>
+                        <button type="button" id="dismissEmergencyBanner">Dismiss</button>
+                    </div>
+                    <div class="emergency-summary">
+                        <article class="stat-card">
+                            <div class="stat-top"><span class="stat-icon">EM</span></div>
+                            <h3>Current Emergency Workers</h3>
+                            <p class="stat-value" id="currentEmergencyCount">0</p>
+                            <p class="stat-description">Workers with active emergency status</p>
+                        </article>
+                        <article class="stat-card">
+                            <div class="stat-top"><span class="stat-icon">CR</span></div>
+                            <h3>Critical Risk Workers</h3>
+                            <p class="stat-value" id="criticalRiskCount">0</p>
+                            <p class="stat-description">Workers currently classified as critical</p>
+                        </article>
+                    </div>
+                    <div class="section-heading compact-heading">
+                        <span>Active Cases</span>
+                        <h2>Emergency Workers</h2>
+                    </div>
+                    <div class="worker-grid" id="emergencyWorkerGrid"></div>
+                    <div class="empty-state hidden" id="emergencyEmptyState">No Active Emergencies</div>
+                    <div class="section-heading compact-heading">
+                        <span>History</span>
+                        <h2>Recent Emergency Timeline</h2>
+                    </div>
+                    <div class="timeline-list" id="emergencyTimeline"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/api.js?v=5.5"></script>
+    <script src="js/charts.js?v=5.5"></script>
+    <script src="js/dashboard.js?v=5.5"></script>
+</body>
+</html>

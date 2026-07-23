@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics | Industrial Worker Safety Monitoring System</title>
+    <link rel="stylesheet" href="css/style.css?v=5.5">
+</head>
+<body data-page="analytics">
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-mark">IW</div>
+                <div>
+                    <h1>Safety Monitor</h1>
+                    <p>Fog Node Dashboard</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link" data-page="dashboard"><span class="nav-icon">▦</span><span>Dashboard</span></a>
+                <a href="live-monitoring.html" class="nav-link" data-page="live-monitoring"><span class="nav-icon">●</span><span>Live Monitoring</span></a>
+                <a href="departments.html" class="nav-link" data-page="departments"><span class="nav-icon">▤</span><span>Departments</span></a>
+                <a href="analytics.html" class="nav-link" data-page="analytics"><span class="nav-icon">◫</span><span>Analytics</span></a>
+                <a href="emergency-centre.html" class="nav-link" data-page="emergency-centre"><span class="nav-icon">!</span><span>Emergency Centre</span></a>
+                <a href="event-logs.html" class="nav-link" data-page="event-logs"><span class="nav-icon">≡</span><span>Event Logs</span></a>
+                <a href="reports.html" class="nav-link" data-page="reports"><span class="nav-icon">▧</span><span>Reports</span></a>
+            </nav>
+        </aside>
+
+        <div class="page-area">
+            <header class="top-header">
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle sidebar"><span></span><span></span><span></span></button>
+                <div class="header-title">
+                    <p>Industrial Worker Safety Monitoring System</p>
+                    <h2>Analytics</h2>
+                </div>
+                <div class="header-status">
+                    <div class="time-block"><span id="currentDate">--</span><strong id="currentTime">--:--:--</strong></div>
+                    <div class="status-pill system-online" id="systemStatus"><span class="status-dot"></span>System Online</div>
+                    <div class="status-pill backend-checking" id="backendStatus"><span class="status-dot"></span>Backend Checking</div>
+                    <button class="refresh-button" id="manualRefresh" type="button">Refresh</button>
+                </div>
+            </header>
+
+            <main class="main-content">
+                <section class="content-section">
+                    <div class="section-heading">
+                        <span>Trends</span>
+                        <h2>Analytics</h2>
+                        <p>Live sensor trends and operational risk summaries from the fog node processing layer.</p>
+                    </div>
+                    <div class="loading-state" id="analyticsLoading">
+                        <span class="loading-spinner"></span>
+                        Loading chart data
+                    </div>
+                    <div class="chart-grid" id="chartGrid">
+                        <article class="chart-card">
+                            <div class="chart-heading">
+                                <h3>Temperature Trend</h3>
+                                <p>Latest worker temperature readings</p>
+                            </div>
+                            <div class="chart-box"><canvas id="temperatureChart"></canvas></div>
+                        </article>
+                        <article class="chart-card">
+                            <div class="chart-heading">
+                                <h3>Heart Rate Trend</h3>
+                                <p>Current worker heart rate readings</p>
+                            </div>
+                            <div class="chart-box"><canvas id="heartRateChart"></canvas></div>
+                        </article>
+                        <article class="chart-card">
+                            <div class="chart-heading">
+                                <h3>Gas Level Trend</h3>
+                                <p>Gas exposure readings by worker</p>
+                            </div>
+                            <div class="chart-box"><canvas id="gasChart"></canvas></div>
+                        </article>
+                        <article class="chart-card">
+                            <div class="chart-heading">
+                                <h3>Humidity Trend</h3>
+                                <p>Humidity readings across the shift</p>
+                            </div>
+                            <div class="chart-box"><canvas id="humidityChart"></canvas></div>
+                        </article>
+                        <article class="chart-card compact-chart">
+                            <div class="chart-heading">
+                                <h3>Risk Distribution</h3>
+                                <p>Normal, warning and critical workers</p>
+                            </div>
+                            <div class="chart-box"><canvas id="riskDistributionChart"></canvas></div>
+                        </article>
+                        <article class="chart-card wide-chart">
+                            <div class="chart-heading">
+                                <h3>Department Risk Comparison</h3>
+                                <p>Warning and critical readings grouped by department</p>
+                            </div>
+                            <div class="chart-box"><canvas id="departmentRiskChart"></canvas></div>
+                        </article>
+                    </div>
+                    <div class="empty-state hidden" id="analyticsEmptyState">No Data Available</div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/chart.umd.min.js?v=5.5"></script>
+    <script src="js/api.js?v=5.5"></script>
+    <script src="js/charts.js?v=5.5"></script>
+    <script src="js/dashboard.js?v=5.5"></script>
+</body>
+</html>

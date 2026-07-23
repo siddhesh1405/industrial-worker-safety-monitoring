@@ -1,8 +1,6 @@
-"""
-AWS client manager.
+"""AWS client manager.
 
-Provides reusable boto3 clients and resources
-for AWS services used in the project.
+Provides reusable boto3 clients and resources for AWS services used in the project.
 """
 
 import boto3
@@ -15,9 +13,6 @@ class AWSClient:
 
     @staticmethod
     def dynamodb_resource():
-        """
-        Return a DynamoDB resource.
-        """
         return boto3.resource(
             "dynamodb",
             region_name=AWS_REGION,
@@ -25,9 +20,6 @@ class AWSClient:
 
     @staticmethod
     def sns_client():
-        """
-        Return an SNS client.
-        """
         return boto3.client(
             "sns",
             region_name=AWS_REGION,
@@ -35,9 +27,6 @@ class AWSClient:
 
     @staticmethod
     def sqs_client():
-        """
-        Return an SQS client.
-        """
         return boto3.client(
             "sqs",
             region_name=AWS_REGION,

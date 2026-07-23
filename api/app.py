@@ -6,7 +6,7 @@ from flask import Flask
 from flask_cors import CORS
 
 from api.routes import api
-
+from api.live_engine import live_engine
 
 def create_app():
 
@@ -18,6 +18,8 @@ def create_app():
         api,
         url_prefix="/api"
     )
+
+    live_engine.start()
 
     return app
 
